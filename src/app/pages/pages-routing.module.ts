@@ -54,6 +54,11 @@ const routes: Routes = [{
         .then(m => m.ChartsModule),
     },
     {
+      path: 'corretora',
+      loadChildren: () => import('./corretora/corretora.module')
+        .then(m => m.CorretoraModule),
+    },
+    {
       path: 'editors',
       loadChildren: () => import('./editors/editors.module')
         .then(m => m.EditorsModule),
