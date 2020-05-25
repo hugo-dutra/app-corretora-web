@@ -1,5 +1,7 @@
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { InitialPageComponent } from './initial-page/initial-page.component';
+
 import {
   NbAuthComponent,
   NbLoginComponent,
@@ -8,45 +10,25 @@ import {
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from '@nebular/auth';
+import { LoginPageComponent } from './login-page/login-page.component';
+
 
 export const routes: Routes = [
+  {
+    path: 'inicial',
+    component: InitialPageComponent
+  },
+  {
+    path: 'logar',
+    component: LoginPageComponent,
+  },
   {
     path: 'pages',
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
   },
-  {
-    path: 'auth',
-    component: NbAuthComponent,
-    children: [
-      {
-        path: '',
-        component: NbLoginComponent,
-      },
-      {
-        path: 'login',
-        component: NbLoginComponent,
-      },
-      {
-        path: 'register',
-        component: NbRegisterComponent,
-      },
-      {
-        path: 'logout',
-        component: NbLogoutComponent,
-      },
-      {
-        path: 'request-password',
-        component: NbRequestPasswordComponent,
-      },
-      {
-        path: 'reset-password',
-        component: NbResetPasswordComponent,
-      },
-    ],
-  },
-  { path: '', redirectTo: 'pages', pathMatch: 'full' },
-  { path: '**', redirectTo: 'pages' },
+  { path: '', redirectTo: 'inicial', pathMatch: 'full' },
+  { path: '**', redirectTo: 'inicial' },
 ];
 
 const config: ExtraOptions = {
