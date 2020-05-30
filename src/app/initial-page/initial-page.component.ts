@@ -19,6 +19,10 @@ export class InitialPageComponent implements OnInit {
     this.router.navigate(['logar']);
   }
 
+  public criar(): void {
+    this.router.navigate(['nova']);
+  }
+
 
 
 }

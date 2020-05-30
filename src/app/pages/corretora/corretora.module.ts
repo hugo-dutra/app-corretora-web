@@ -1,3 +1,4 @@
+import { CorretoraService } from './corretora.service';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,6 +16,6 @@ import { AlterarComponent } from './alterar/alterar.component';
     CommonModule,
     CorretoraRoutingModule,
     FormsModule,
-  ]
+  ],
 })
 export class CorretoraModule { }

@@ -19,6 +19,11 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
+      path: 'administradora',
+      loadChildren: () => import('./administradora/administradora.module')
+        .then(m => m.AdministradoraModule),
+    },
+    {
       path: 'layout',
       loadChildren: () => import('./layout/layout.module')
         .then(m => m.LayoutModule),
@@ -57,6 +62,11 @@ const routes: Routes = [{
       path: 'corretora',
       loadChildren: () => import('./corretora/corretora.module')
         .then(m => m.CorretoraModule),
+    },
+    {
+      path: 'usuario',
+      loadChildren: () => import('./usuario/usuario.module')
+        .then(m => m.UsuarioModule),
     },
     {
       path: 'editors',

@@ -1,4 +1,5 @@
-import { ExtraOptions, RouterModule, Routes } from '@angular/router';
+import { CreatePageComponent } from './create-page/create-page.component';
+import { ExtraOptions, RouterModule, Routes, Router } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { InitialPageComponent } from './initial-page/initial-page.component';
 
@@ -15,6 +16,14 @@ import { LoginPageComponent } from './login-page/login-page.component';
 
 export const routes: Routes = [
   {
+    path: '',
+    component: InitialPageComponent
+  },
+  {
+    path: 'nova',
+    component: CreatePageComponent
+  },
+  {
     path: 'inicial',
     component: InitialPageComponent
   },
@@ -27,7 +36,6 @@ export const routes: Routes = [
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
   },
-  { path: '', redirectTo: 'inicial', pathMatch: 'full' },
   { path: '**', redirectTo: 'inicial' },
 ];
 
@@ -40,4 +48,13 @@ const config: ExtraOptions = {
   exports: [RouterModule],
 })
 export class AppRoutingModule {
+  constructor(private router: Router) {
+    //this.ajustarRota();
+  }
+
+  public ajustarRota() {
+    /* if (this.router.url == '/') {
+      this.router.navigate(['inicial']);
+    } */
+  }
 }

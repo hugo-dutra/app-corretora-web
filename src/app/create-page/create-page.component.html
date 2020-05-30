@@ -1,0 +1,31 @@
+<div class="container-fluid d-flex justify-content-center">
+  <div class="col-lg-5 col-md-8 col-sm-12 space-top">
+    <div class="card">
+      <div class="card-header text-light bg-dark">
+        Nova Corretora
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label class="text-left border-bottom col-12">Dados da corretora</label>
+          <input class="form-control mb-1" type="text" name="" [(ngModel)]="corretora.nome" placeholder="nome...">
+          <input class="form-control mb-1" type="email" name="" [(ngModel)]="corretora.email" placeholder="e-mail...">
+          <input class="form-control mb-1" type="tel" name="" [(ngModel)]="corretora.telefone"
+            placeholder="telefone...">
+        </div>
+        <div class="form-group">
+          <label class="text-left border-bottom col-12">Dados do administrador</label>
+          <input class="form-control mb-1" type="text" name="" [(ngModel)]="usuario.nome" placeholder="nome...">
+          <input class="form-control mb-1" type="email" name="" [(ngModel)]="usuario.email" placeholder="email...">
+          <input class="form-control mb-1" type="password" name="" [(ngModel)]="usuario.senha" placeholder="senha...">
+          <input class="form-control mb-1" type="password" name="" [(ngModel)]="confirmarSenhaAdministrador"
+            placeholder="confirmar a senha...">
+        </div>
+      </div>
+      <div class="card-footer bg-dark">
+        <button type="" class="float-right btn btn-sm btn-success text-light" (click)="criarNovaCorretora()">Criar
+          corretora</button>
+      </div>
+    </div>
+  </div>
+
+</div>

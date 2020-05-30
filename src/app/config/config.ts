@@ -1,4 +1,4 @@
-import { build, buildTarget } from './enviroment'
+import { buildTarget } from './enviroment'
 
 
 export const enviroment = {

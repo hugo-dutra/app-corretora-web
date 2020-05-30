@@ -1,3 +1,4 @@
+import { CorretoraModule } from './pages/corretora/corretora.module';
 /**
  * @license
  * Copyright Akveo. All Rights Reserved.
@@ -22,14 +23,18 @@ import {
 } from '@nebular/theme';
 import { InitialPageComponent } from './initial-page/initial-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { CreatePageComponent } from './create-page/create-page.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, InitialPageComponent, LoginPageComponent],
+  declarations: [AppComponent, InitialPageComponent, LoginPageComponent, CreatePageComponent],
   imports: [
+    CorretoraModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
