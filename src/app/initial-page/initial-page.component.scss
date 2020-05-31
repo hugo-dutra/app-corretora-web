@@ -1,5 +1,5 @@
 body {
-  padding-top: 56px;
+  padding-top: 10px;
 }
 
 .bg-image-full {
@@ -9,23 +9,10 @@ body {
   background-size: cover;
   -o-background-size: cover;
 }
+.back-image {
+  height: 90vh;
+}
 
 .nav-item {
   cursor: pointer;
 }
-/* .back-image {
-  background-attachment: fixed;
-} */
-
-/* .back-image:before {
-  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
-  filter: blur(500px);
-}
-
-.back-image {
-  background: inherit;
-}
-
-.back-image:before {
-  background: inherit;
-} */

@@ -49,12 +49,7 @@ const config: ExtraOptions = {
 })
 export class AppRoutingModule {
   constructor(private router: Router) {
-    //this.ajustarRota();
   }
 
-  public ajustarRota() {
-    /* if (this.router.url == '/') {
-      this.router.navigate(['inicial']);
-    } */
-  }
+
 }
