@@ -79,6 +79,16 @@ const routes: Routes = [{
         .then(m => m.OperadoraModule),
     },
     {
+      path: 'tipo-comissao',
+      loadChildren: () => import('./tipo-comissao/tipo-comissao.module')
+        .then(m => m.TipoComissaoModule),
+    },
+    {
+      path: 'tipo-contrato',
+      loadChildren: () => import('./tipo-contrato/tipo-contrato.module')
+        .then(m => m.TipoContratoModule),
+    },
+    {
       path: 'tables',
       loadChildren: () => import('./tables/tables.module')
         .then(m => m.TablesModule),

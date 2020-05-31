@@ -1,22 +1,22 @@
-import { Utils } from './../../../shared/utils';
-import { Operadora } from './../dto/operadora.dto';
-import { OperadoraService } from './../operadora.service';
+import { TipoContratoService } from './../tipo-contrato.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { TipoContrato } from '../dto/tipo-contrato.dto';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Utils } from '../../../shared/utils';
 
 @Component({
   selector: 'ngx-inserir',
   templateUrl: './inserir.component.html',
   styleUrls: ['./inserir.component.scss'],
-  providers: [OperadoraService]
+  providers: [TipoContratoService]
 })
 export class InserirComponent implements OnInit {
 
-  public operadora = new Operadora()
+  public tipoContrato = new TipoContrato()
   constructor(
     private router: Router,
     private activeRoute: ActivatedRoute,
-    private operadoraService: OperadoraService) { }
+    private tipoContratoService: TipoContratoService) { }
 
   ngOnInit(): void {
 
@@ -27,11 +27,12 @@ export class InserirComponent implements OnInit {
   }
 
   public salvar(): void {
-    this.operadora.cta_id = Utils.recuperarDadosUsuarioLogado().cta_id;
-    this.operadoraService.inserir(this.operadora).then(retorno => {
+    this.tipoContrato.cta_id = Utils.recuperarDadosUsuarioLogado().cta_id;
+    this.tipoContratoService.inserir(this.tipoContrato).then(retorno => {
       console.log(retorno);
     }).catch(reason => {
       console.log(reason);
     })
   }
+
 }

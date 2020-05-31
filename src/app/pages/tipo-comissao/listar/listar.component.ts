@@ -1,18 +1,18 @@
-import { OperadoraService } from './../operadora.service';
-import { Operadora } from './../dto/operadora.dto';
+import { TipoComissaoService } from './../tipo-comissao.service';
 import { Component, OnInit } from '@angular/core';
+import { TipoComissao } from '../dto/tipo-comissao.dto';
 import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'ngx-listar',
   templateUrl: './listar.component.html',
   styleUrls: ['./listar.component.scss'],
-  providers: [OperadoraService],
+  providers: [TipoComissaoService]
 })
 export class ListarComponent implements OnInit {
-  public operadoras = new Array<Operadora>();
-  constructor(
-    private operadoraService: OperadoraService,
+
+  public tiposComissao = new Array<TipoComissao>();
+  constructor(private tipoComissaoService: TipoComissaoService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -24,26 +24,26 @@ export class ListarComponent implements OnInit {
   }
 
   public listar(): void {
-    this.operadoraService.listar().then((operadoras: Operadora[]) => {
-      this.operadoras = operadoras;
+    this.tipoComissaoService.listar().then((tiposComissao: TipoComissao[]) => {
+      this.tiposComissao = tiposComissao;
     }).catch(reason => {
       console.log(reason);
     });
   }
 
-  public alterar(operadora: Operadora): void {
+  public alterar(tipoComissao: TipoComissao): void {
     const navigationExtras: NavigationExtras = {
       queryParams: {
-        operadora: JSON.stringify(operadora)
+        tipoComissao: JSON.stringify(tipoComissao)
       },
     };
     this.router.navigate([`${this.router.url}/alterar`], navigationExtras);
   }
 
-  public excluir(operadora: Operadora): void {
+  public excluir(tipoComissao: TipoComissao): void {
     const navigationExtras: NavigationExtras = {
       queryParams: {
-        operadora: JSON.stringify(operadora)
+        tipoComissao: JSON.stringify(tipoComissao)
       },
     };
     this.router.navigate([`${this.router.url}/excluir`], navigationExtras);

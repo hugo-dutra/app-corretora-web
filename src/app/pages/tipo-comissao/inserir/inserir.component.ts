@@ -1,25 +1,23 @@
-import { Utils } from './../../../shared/utils';
-import { Operadora } from './../dto/operadora.dto';
-import { OperadoraService } from './../operadora.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { TipoComissao } from '../dto/tipo-comissao.dto';
+import { Router, ActivatedRoute } from '@angular/router';
+import { TipoComissaoService } from '../tipo-comissao.service';
+import { Utils } from '../../../shared/utils';
 
 @Component({
   selector: 'ngx-inserir',
   templateUrl: './inserir.component.html',
-  styleUrls: ['./inserir.component.scss'],
-  providers: [OperadoraService]
+  styleUrls: ['./inserir.component.scss']
 })
 export class InserirComponent implements OnInit {
 
-  public operadora = new Operadora()
+  public tipoComissao = new TipoComissao()
   constructor(
     private router: Router,
     private activeRoute: ActivatedRoute,
-    private operadoraService: OperadoraService) { }
+    private tipoContratoService: TipoComissaoService) { }
 
   ngOnInit(): void {
-
   }
 
   public listar(): void {
@@ -27,11 +25,12 @@ export class InserirComponent implements OnInit {
   }
 
   public salvar(): void {
-    this.operadora.cta_id = Utils.recuperarDadosUsuarioLogado().cta_id;
-    this.operadoraService.inserir(this.operadora).then(retorno => {
+    this.tipoComissao.cta_id = Utils.recuperarDadosUsuarioLogado().cta_id;
+    this.tipoContratoService.inserir(this.tipoComissao).then(retorno => {
       console.log(retorno);
     }).catch(reason => {
       console.log(reason);
     })
   }
+
 }

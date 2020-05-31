@@ -1,5 +1,5 @@
-import { OperadoraService } from './../operadora.service';
-import { Operadora } from './../dto/operadora.dto';
+import { TipoContrato } from './../dto/tipo-contrato.dto';
+import { TipoContratoService } from './../tipo-contrato.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 
@@ -7,12 +7,11 @@ import { Router, NavigationExtras } from '@angular/router';
   selector: 'ngx-listar',
   templateUrl: './listar.component.html',
   styleUrls: ['./listar.component.scss'],
-  providers: [OperadoraService],
+  providers: [TipoContratoService]
 })
 export class ListarComponent implements OnInit {
-  public operadoras = new Array<Operadora>();
-  constructor(
-    private operadoraService: OperadoraService,
+  public tiposContrato = new Array<TipoContrato>();
+  constructor(private tipoContratoService: TipoContratoService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -24,26 +23,26 @@ export class ListarComponent implements OnInit {
   }
 
   public listar(): void {
-    this.operadoraService.listar().then((operadoras: Operadora[]) => {
-      this.operadoras = operadoras;
+    this.tipoContratoService.listar().then((tiposContrato: TipoContrato[]) => {
+      this.tiposContrato = tiposContrato;
     }).catch(reason => {
       console.log(reason);
     });
   }
 
-  public alterar(operadora: Operadora): void {
+  public alterar(tipoContrato: TipoContrato): void {
     const navigationExtras: NavigationExtras = {
       queryParams: {
-        operadora: JSON.stringify(operadora)
+        tipoContrato: JSON.stringify(tipoContrato)
       },
     };
     this.router.navigate([`${this.router.url}/alterar`], navigationExtras);
   }
 
-  public excluir(operadora: Operadora): void {
+  public excluir(tipoContrato: TipoContrato): void {
     const navigationExtras: NavigationExtras = {
       queryParams: {
-        operadora: JSON.stringify(operadora)
+        tipoContrato: JSON.stringify(tipoContrato)
       },
     };
     this.router.navigate([`${this.router.url}/excluir`], navigationExtras);

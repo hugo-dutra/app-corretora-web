@@ -19,6 +19,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/operadora',
       },
       {
+        title: 'Tipo de comissao',
+        link: '/pages/tipo-comissao',
+      },
+      {
+        title: 'Tipo de contrato',
+        link: '/pages/tipo-contrato',
+      },
+      {
         title: 'Usuario',
         link: '/pages/usuario',
       },
