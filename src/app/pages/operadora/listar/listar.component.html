@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row border-bottom">
     <div class="col-10">
-      <h5>Administradoras</h5>
+      <h5>Operadoras</h5>
     </div>
     <div class="col-2">
       <button class="btn btn-sm form-control text-light bg-primary" (click)="inserir()">Nova</button>
@@ -18,13 +18,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="row" *ngFor="let admin of administradoras">
-          <td class="col-1 float-left">{{ admin.id }}</td>
-          <td class="col-9 float-left">{{ admin.nome }}</td>
+        <tr class="row" *ngFor="let operadora of operadoras">
+          <td class="col-1 float-left">{{ operadora.id }}</td>
+          <td class="col-9 float-left">{{ operadora.nome }}</td>
           <td class="col-1 float-left"><button class="btn btn-sm text-light bg-warning"
-              (click)="alterar(admin)">Alterar</button></td>
+              (click)="alterar(operadora)">Alterar</button></td>
           <td class="col-1 float-left"><button class="btn btn-sm text-light bg-danger"
-              (click)="excluir(admin)">Excluir</button></td>
+              (click)="excluir(operadora)">Excluir</button></td>
         </tr>
       </tbody>
     </table>

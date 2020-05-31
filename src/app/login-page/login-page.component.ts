@@ -17,6 +17,8 @@ export class LoginPageComponent implements OnInit {
     private loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.usuario.email = 'hugo.dutra@hotmail.com';
+    this.usuario.senha = '123';
   }
 
   public logar(): void {

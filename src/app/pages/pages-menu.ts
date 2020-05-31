@@ -15,6 +15,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/corretora',
       },
       {
+        title: 'Operadora',
+        link: '/pages/operadora',
+      },
+      {
         title: 'Usuario',
         link: '/pages/usuario',
       },
@@ -26,25 +30,20 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'pie-chart',
     children: [
       {
-        title: 'Stepper',
-        link: '/pages/layout/stepper',
+        title: 'Administradora',
+        link: '/pages/administradora',
       },
       {
-        title: 'List',
-        link: '/pages/layout/list',
+        title: 'Corretora',
+        link: '/pages/corretora',
       },
       {
-        title: 'Infinite List',
-        link: '/pages/layout/infinite-list',
+        title: 'Operadora',
+        link: '/pages/operadora',
       },
       {
-        title: 'Accordion',
-        link: '/pages/layout/accordion',
-      },
-      {
-        title: 'Tabs',
-        pathMatch: 'prefix',
-        link: '/pages/layout/tabs',
+        title: 'Usuario',
+        link: '/pages/usuario',
       },
     ],
   },

@@ -74,6 +74,11 @@ const routes: Routes = [{
         .then(m => m.EditorsModule),
     },
     {
+      path: 'operadora',
+      loadChildren: () => import('./operadora/operadora.module')
+        .then(m => m.OperadoraModule),
+    },
+    {
       path: 'tables',
       loadChildren: () => import('./tables/tables.module')
         .then(m => m.TablesModule),

@@ -1,23 +1,25 @@
-import { AdministradoraService } from './../administradora.service';
 import { Utils } from './../../../shared/utils';
+import { Operadora } from './../dto/operadora.dto';
+import { OperadoraService } from './../operadora.service';
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Administradora } from '../dto/administradora.dto';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-inserir',
   templateUrl: './inserir.component.html',
   styleUrls: ['./inserir.component.scss'],
-  providers: [AdministradoraService],
+  providers: [OperadoraService]
 })
 export class InserirComponent implements OnInit {
-  public administradora = new Administradora()
+
+  public operadora = new Operadora()
   constructor(
     private router: Router,
     private activeRoute: ActivatedRoute,
-    private administradoraService: AdministradoraService) { }
+    private operadoraService: OperadoraService) { }
 
   ngOnInit(): void {
+    this.listar();
   }
 
   public listar(): void {
@@ -25,12 +27,11 @@ export class InserirComponent implements OnInit {
   }
 
   public salvar(): void {
-    this.administradora.cta_id = Utils.recuperarDadosUsuarioLogado().cta_id;
-    this.administradoraService.inserir(this.administradora).then(retorno => {
+    this.operadora.cta_id = Utils.recuperarDadosUsuarioLogado().cta_id;
+    this.operadoraService.inserir(this.operadora).then(retorno => {
       console.log(retorno);
     }).catch(reason => {
       console.log(reason);
     })
   }
-
 }
