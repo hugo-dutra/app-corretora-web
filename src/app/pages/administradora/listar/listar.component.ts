@@ -1,7 +1,7 @@
 import { AdministradoraService } from './../administradora.service';
 import { Component, OnInit } from '@angular/core';
 import { Administradora } from '../dto/administradora.dto';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'ngx-listar',
@@ -25,18 +25,27 @@ export class ListarComponent implements OnInit {
   public listar(): void {
     this.administradoraService.listar().then((administradoras: Administradora[]) => {
       this.administradoras = administradoras;
-      console.log(this.administradoras);
     }).catch(reason => {
       console.log(reason);
     });
   }
 
   public alterar(administradora: Administradora): void {
-    console.log(administradora);
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        administradora: JSON.stringify(administradora)
+      },
+    };
+    this.router.navigate([`${this.router.url}/alterar`], navigationExtras);
   }
 
   public excluir(administradora: Administradora): void {
-    console.log(administradora);
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        administradora: JSON.stringify(administradora)
+      },
+    };
+    this.router.navigate([`${this.router.url}/excluir`], navigationExtras);
   }
 
 }
