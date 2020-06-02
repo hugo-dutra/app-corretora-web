@@ -6,9 +6,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'CADASTROS',
     icon: 'edit',
     children: [
+
       {
         title: 'Administradora',
         link: '/pages/administradora',
+      },
+      {
+        title: 'Classe de contrato',
+        link: '/pages/classe-contrato',
       },
       {
         title: 'Corretora',
@@ -30,6 +35,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Usuario',
         link: '/pages/usuario',
       },
+
     ],
   },
 
@@ -83,8 +89,4 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
 
-
-
-
-
-];
+]

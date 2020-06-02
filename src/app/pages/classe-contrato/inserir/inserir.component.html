@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="row border-bottom">
+    <div class="col-10">
+      <h5>Nova Classe de Contrato</h5>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-sm form-control text-light bg-primary" (click)="listar()">Listagem</button>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-9">
+      <input class="form-control" [(ngModel)]="classeContrato.nome" placeholder="nome...">
+    </div>
+    <div class="col-3">
+      <select class="form-control" [(ngModel)]="classeContrato.tco_id">
+        <option type="number" *ngFor="let tipoContrato of tiposContrato" [ngValue]="tipoContrato.id">
+          {{tipoContrato.nome}}
+        </option>
+      </select>
+    </div>
+    <div class="col-12 mt-3">
+      <button class="btn btn-sm btn-primary text-light bg-success float-right col-2" (click)="salvar()">Salvar</button>
+    </div>
+  </div>
+</div>

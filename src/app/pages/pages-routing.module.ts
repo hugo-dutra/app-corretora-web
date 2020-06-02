@@ -24,6 +24,11 @@ const routes: Routes = [{
         .then(m => m.AdministradoraModule),
     },
     {
+      path: 'classe-contrato',
+      loadChildren: () => import('./classe-contrato/classe-contrato.module')
+        .then(m => m.ClasseContratoModule),
+    },
+    {
       path: 'layout',
       loadChildren: () => import('./layout/layout.module')
         .then(m => m.LayoutModule),
