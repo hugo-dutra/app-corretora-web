@@ -99,6 +99,11 @@ const routes: Routes = [{
         .then(m => m.TipoContratoModule),
     },
     {
+      path: 'tipo-pagamento',
+      loadChildren: () => import('./tipo-pagamento/tipo-pagamento.module')
+        .then(m => m.TipoPagamentoModule),
+    },
+    {
       path: 'tables',
       loadChildren: () => import('./tables/tables.module')
         .then(m => m.TablesModule),
