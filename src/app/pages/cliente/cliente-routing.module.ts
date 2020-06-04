@@ -4,6 +4,7 @@ import { InserirComponent } from './inserir/inserir.component';
 import { ListarComponent } from './listar/listar.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DetalharComponent } from './detalhar/detalhar.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'excluir',
     component: ExcluirComponent
+  },
+  {
+    path: 'detalhar',
+    component: DetalharComponent
   },
 ];
 

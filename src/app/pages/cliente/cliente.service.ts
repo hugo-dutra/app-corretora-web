@@ -25,6 +25,12 @@ export class ClienteService {
     return this.http.get(`${environment.protocol}://${environment.host}:${environment.port}/${this.rotaBase}/${cta_id}`, headers).toPromise();
   }
 
+  public filtrar(texto: string): Promise<any> {
+    const cta_id = Utils.recuperarDadosUsuarioLogado().cta_id;
+    const headers = { headers: new HttpHeaders().append('Content-type', 'application/json').append('Authorization', localStorage.getItem('token')), };
+    return this.http.get(`${environment.protocol}://${environment.host}:${environment.port}/${this.rotaBase}/filtrar/${cta_id}/${texto}`, headers).toPromise();
+  }
+
   public alterar(cliente: Cliente): Promise<any> {
     const headers = { headers: new HttpHeaders().append('Content-type', 'application/json').append('Authorization', localStorage.getItem('token')), };
     return this.http.patch(`${environment.protocol}://${environment.host}:${environment.port}/${this.rotaBase}`, cliente, headers).toPromise();

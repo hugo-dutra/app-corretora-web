@@ -7,10 +7,11 @@ import { ListarComponent } from './listar/listar.component';
 import { AlterarComponent } from './alterar/alterar.component';
 import { ExcluirComponent } from './excluir/excluir.component';
 import { FormsModule } from '@angular/forms';
+import { DetalharComponent } from './detalhar/detalhar.component';
 
 
 @NgModule({
-  declarations: [InserirComponent, ListarComponent, AlterarComponent, ExcluirComponent],
+  declarations: [InserirComponent, ListarComponent, AlterarComponent, ExcluirComponent, DetalharComponent],
   imports: [
     CommonModule,
     FormsModule,

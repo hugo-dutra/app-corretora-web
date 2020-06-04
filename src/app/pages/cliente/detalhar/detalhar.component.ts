@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../dto/cliente.dto';
+import { Utils } from '../../../shared/utils';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ClienteService } from '../cliente.service';
-import { Utils } from '../../../shared/utils';
 
 @Component({
-  selector: 'ngx-alterar',
-  templateUrl: './alterar.component.html',
-  styleUrls: ['./alterar.component.scss']
+  selector: 'ngx-detalhar',
+  templateUrl: './detalhar.component.html',
+  styleUrls: ['./detalhar.component.scss']
 })
-export class AlterarComponent implements OnInit {
+export class DetalharComponent implements OnInit {
+
   public cliente = new Cliente();
   public listaUF = Utils.listarUF();
 
@@ -26,16 +27,6 @@ export class AlterarComponent implements OnInit {
 
   public listar(): void {
     this.router.navigate([`pages/${this.activeRoute.parent.routeConfig.path}`])
-  }
-
-  public salvar(): void {
-    this.cliente.cta_id = Utils.recuperarDadosUsuarioLogado().cta_id;
-    this.cliente.usr_id = Utils.recuperarDadosUsuarioLogado().id;
-    this.clienteService.alterar(this.cliente).then((retorno: any) => {
-      this.router.navigate([`pages/${this.activeRoute.parent.routeConfig.path}`])
-    }).catch(reason => {
-      console.log(reason);
-    });
   }
 
   public consultarCep(event: Event): void {

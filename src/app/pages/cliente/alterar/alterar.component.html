@@ -1,1 +1,27 @@
-<p>alterar cliente works!</p>
+<div class="container-fluid">
+  <div class="row border-bottom">
+    <div class="col-10">
+      <h5>Alterar cliente</h5>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-sm form-control text-light bg-primary" (click)="listar()">Listagem</button>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <input type="text" class="col-12 form-control" [(ngModel)]="cliente.nome" placeholder="nome...">
+    <input type="email" class="col-12 form-control" [(ngModel)]="cliente.email" placeholder="email...">
+    <input type="text" class="col-2 form-control" [(ngModel)]="cliente.cep" (change)="consultarCep($event)"
+      placeholder="cep...">
+    <select class="form-control col-2" [(ngModel)]="cliente.uf">
+      <option *ngFor="let UF of listaUF" [ngValue]="UF.sigla">
+        {{UF.nome}}
+      </option>
+    </select>
+    <input class="col-8 form-control" [(ngModel)]="cliente.endereco" placeholder="endereço...">
+    <input class="col-6 form-control" [(ngModel)]="cliente.cidade" placeholder="cidade...">
+    <input class="col-6 form-control" [(ngModel)]="cliente.cpf_cnpj" placeholder="cpf/cnpj...">
+    <div class="col-12 mt-3">
+      <button class="btn btn-sm btn-primary text-light bg-success float-right col-2" (click)="salvar()">Salvar</button>
+    </div>
+  </div>
+</div>
