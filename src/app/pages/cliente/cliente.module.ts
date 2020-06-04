@@ -1,12 +1,12 @@
-import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TipoPagamentoRoutingModule } from './tipo-pagamento-routing.module';
+import { ClienteRoutingModule } from './cliente-routing.module';
 import { InserirComponent } from './inserir/inserir.component';
 import { ListarComponent } from './listar/listar.component';
 import { AlterarComponent } from './alterar/alterar.component';
 import { ExcluirComponent } from './excluir/excluir.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,7 +14,7 @@ import { ExcluirComponent } from './excluir/excluir.component';
   imports: [
     CommonModule,
     FormsModule,
-    TipoPagamentoRoutingModule
+    ClienteRoutingModule
   ]
 })
-export class TipoPagamentoModule { }
+export class ClienteModule { }

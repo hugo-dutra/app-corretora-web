@@ -1,18 +1,18 @@
-import { TipoPagamentoService } from './../tipo-pagamento.service';
-import { TipoPagamento } from './../dto/tipo-pagamento.dto';
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
+import { Cliente } from '../dto/cliente.dto';
+import { ClienteService } from '../cliente.service';
 
 @Component({
   selector: 'ngx-listar',
   templateUrl: './listar.component.html',
-  styleUrls: ['./listar.component.scss'],
-  providers: [TipoPagamentoService]
+  styleUrls: ['./listar.component.scss']
 })
 export class ListarComponent implements OnInit {
 
-  public tiposPagamento = new Array<TipoPagamento>();
-  constructor(private tipoPagamentoService: TipoPagamentoService,
+  public clientes = new Array<Cliente>();
+  constructor(
+    private clienteService: ClienteService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -24,26 +24,26 @@ export class ListarComponent implements OnInit {
   }
 
   public listar(): void {
-    this.tipoPagamentoService.listar().then((tipoPagamento: TipoPagamento[]) => {
-      this.tiposPagamento = tipoPagamento;
+    this.clienteService.listar().then((clientes: Cliente[]) => {
+      this.clientes = clientes;
     }).catch(reason => {
       console.log(reason);
     });
   }
 
-  public alterar(tipoPagamento: TipoPagamento): void {
+  public alterar(cliente: Cliente): void {
     const navigationExtras: NavigationExtras = {
       queryParams: {
-        tipoPagamento: JSON.stringify(tipoPagamento)
+        cliente: JSON.stringify(cliente)
       },
     };
     this.router.navigate([`${this.router.url}/alterar`], navigationExtras);
   }
 
-  public excluir(tipoPagamento: TipoPagamento): void {
+  public excluir(cliente: Cliente): void {
     const navigationExtras: NavigationExtras = {
       queryParams: {
-        tipoPagamento: JSON.stringify(tipoPagamento)
+        cliente: JSON.stringify(cliente)
       },
     };
     this.router.navigate([`${this.router.url}/excluir`], navigationExtras);

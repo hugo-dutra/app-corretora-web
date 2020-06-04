@@ -2,6 +2,10 @@ import { NbMenuItem } from '@nebular/theme';
 
 const CADASTRO_CHILDREN: NbMenuItem[] = [
   {
+    title: 'Cliente',
+    link: '/pages/cliente',
+  },
+  {
     title: 'Tipo de pagamento',
     link: '/pages/tipo-pagamento',
   },
