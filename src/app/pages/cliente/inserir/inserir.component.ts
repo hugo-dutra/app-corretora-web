@@ -21,6 +21,7 @@ export class InserirComponent implements OnInit {
     private clienteService: ClienteService) { }
 
   ngOnInit(): void {
+    this.cliente.pessoa_fisica = true;
   }
 
   public listar(): void {

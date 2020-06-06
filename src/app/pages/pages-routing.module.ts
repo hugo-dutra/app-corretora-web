@@ -24,6 +24,11 @@ const routes: Routes = [{
         .then(m => m.AdministradoraModule),
     },
     {
+      path: 'beneficiario',
+      loadChildren: () => import('./beneficiario/beneficiario.module')
+        .then(m => m.BeneficiarioModule),
+    },
+    {
       path: 'cliente',
       loadChildren: () => import('./cliente/cliente.module')
         .then(m => m.ClienteModule),
@@ -72,6 +77,11 @@ const routes: Routes = [{
       path: 'corretora',
       loadChildren: () => import('./corretora/corretora.module')
         .then(m => m.CorretoraModule),
+    },
+    {
+      path: 'dependente',
+      loadChildren: () => import('./dependente/dependente.module')
+        .then(m => m.DependenteModule),
     },
     {
       path: 'usuario',

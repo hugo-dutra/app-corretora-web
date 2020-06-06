@@ -20,6 +20,11 @@
     <input class="col-8 form-control" [(ngModel)]="cliente.endereco" placeholder="endereço...">
     <input class="col-6 form-control" [(ngModel)]="cliente.cidade" placeholder="cidade...">
     <input class="col-6 form-control" [(ngModel)]="cliente.cpf_cnpj" placeholder="cpf/cnpj...">
+    <div class="form-check col-2">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="cliente.pessoa_fisica">
+      <label class="form-check-label" for="exampleCheck1">Pessoa física</label>
+    </div>
+
     <div class="col-12 mt-3">
       <button class="btn btn-sm btn-primary text-light bg-success float-right col-2" (click)="salvar()">Salvar</button>
     </div>

@@ -7,6 +7,7 @@ export class Cliente {
   uf: string;
   email: string;
   cpf_cnpj: string;
+  pessoa_fisica: boolean;
   usr_id: number;
   usr_nome: string;
   cta_id: number;

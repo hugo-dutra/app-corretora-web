@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { Cliente } from '../dto/cliente.dto';
 import { ClienteService } from '../cliente.service';
 
@@ -15,7 +15,8 @@ export class ListarComponent implements OnInit {
 
   constructor(
     private clienteService: ClienteService,
-    private router: Router) { }
+    private router: Router,
+    private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.listar();
@@ -90,6 +91,15 @@ export class ListarComponent implements OnInit {
       },
     };
     this.router.navigate([`${this.router.url}/detalhar`], navigationExtras);
+  }
+
+  public beneficiario(cliente: Cliente): void {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        clt_id: JSON.stringify(cliente.id)
+      },
+    };
+    this.router.navigate([`pages/beneficiario`], navigationExtras);
   }
 
 }

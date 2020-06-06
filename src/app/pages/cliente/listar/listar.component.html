@@ -36,8 +36,8 @@
           <tr class="row" *ngFor="let cliente of clientes">
             <td class="col-1 float-left">{{ cliente.id }}</td>
             <td class="col-6 float-left">{{ cliente.nome }}</td>
-            <td class="col-1 text-center"><button class="btn btn-sm text-light bg-primary"><i
-                  class="fa fa-sm fa-users"></i></button></td>
+            <td class="col-1 text-center"><button class="btn btn-sm text-light bg-primary"
+                (click)="beneficiario(cliente)"><i class="fa fa-sm fa-users"></i></button></td>
             <td class="col-1 float-left"><button class="btn btn-sm text-light bg-success"
                 (click)="detalhar(cliente)">Detalhar</button></td>
             <td class="col-1 float-left"><button class="btn btn-sm text-light bg-dark">Contratos</button></td>

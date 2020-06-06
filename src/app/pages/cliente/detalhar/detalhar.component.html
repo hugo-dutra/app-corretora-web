@@ -20,5 +20,9 @@
     <input readonly class="col-8 form-control" [(ngModel)]="cliente.endereco" placeholder="endereço...">
     <input readonly class="col-6 form-control" [(ngModel)]="cliente.cidade" placeholder="cidade...">
     <input readonly class="col-6 form-control" [(ngModel)]="cliente.cpf_cnpj" placeholder="cpf/cnpj...">
+    <div class="form-check col-2">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="cliente.pessoa_fisica">
+      <label class="form-check-label" for="exampleCheck1">Pessoa física</label>
+    </div>
   </div>
 </div>
