@@ -39,6 +39,7 @@ export class ListarComponent implements OnInit {
       queryParams: {
         clt_id: JSON.stringify(this.clt_id),
       },
+      skipLocationChange: true,
     };
     this.router.navigate([`pages/beneficiario`], navigationExtras);
   }
@@ -49,6 +50,7 @@ export class ListarComponent implements OnInit {
         clt_id: JSON.stringify(this.clt_id),
         bnf_id: JSON.stringify(this.bnf_id)
       },
+      skipLocationChange: true,
     };
     this.router.navigate([`${this.router.url.split('?')[0]}/inserir`], navigationExtras);
   }
@@ -60,6 +62,7 @@ export class ListarComponent implements OnInit {
         bnf_id: JSON.stringify(this.bnf_id),
         dependente: JSON.stringify(dependente)
       },
+      skipLocationChange: true,
     };
     this.router.navigate([`${this.router.url.split('?')[0]}/alterar`], navigationExtras);
   }
@@ -71,6 +74,7 @@ export class ListarComponent implements OnInit {
         bnf_id: JSON.stringify(this.bnf_id),
         dependente: JSON.stringify(dependente)
       },
+      skipLocationChange: true,
     };
     this.router.navigate([`${this.router.url.split('?')[0]}/excluir`], navigationExtras);
   }

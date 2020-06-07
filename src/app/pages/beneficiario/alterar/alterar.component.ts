@@ -28,6 +28,7 @@ export class AlterarComponent implements OnInit {
       queryParams: {
         clt_id: JSON.stringify(this.beneficiario.clt_id)
       },
+      skipLocationChange: true,
     };
     this.router.navigate([`pages/${this.activeRoute.parent.routeConfig.path.split('?')[0]}`], navigationExtras);
   }

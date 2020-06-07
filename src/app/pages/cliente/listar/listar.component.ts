@@ -71,6 +71,7 @@ export class ListarComponent implements OnInit {
       queryParams: {
         cliente: JSON.stringify(cliente)
       },
+      skipLocationChange: true,
     };
     this.router.navigate([`${this.router.url}/alterar`], navigationExtras);
   }
@@ -80,6 +81,7 @@ export class ListarComponent implements OnInit {
       queryParams: {
         cliente: JSON.stringify(cliente)
       },
+      skipLocationChange: true,
     };
     this.router.navigate([`${this.router.url}/excluir`], navigationExtras);
   }
@@ -89,6 +91,7 @@ export class ListarComponent implements OnInit {
       queryParams: {
         cliente: JSON.stringify(cliente)
       },
+      skipLocationChange: true,
     };
     this.router.navigate([`${this.router.url}/detalhar`], navigationExtras);
   }
@@ -98,6 +101,7 @@ export class ListarComponent implements OnInit {
       queryParams: {
         clt_id: JSON.stringify(cliente.id)
       },
+      skipLocationChange: true
     };
     this.router.navigate([`pages/beneficiario`], navigationExtras);
   }

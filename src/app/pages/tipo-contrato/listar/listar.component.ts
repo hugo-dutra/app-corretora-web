@@ -35,6 +35,7 @@ export class ListarComponent implements OnInit {
       queryParams: {
         tipoContrato: JSON.stringify(tipoContrato)
       },
+      skipLocationChange: true,
     };
     this.router.navigate([`${this.router.url}/alterar`], navigationExtras);
   }
@@ -44,6 +45,7 @@ export class ListarComponent implements OnInit {
       queryParams: {
         tipoContrato: JSON.stringify(tipoContrato)
       },
+      skipLocationChange: true,
     };
     this.router.navigate([`${this.router.url}/excluir`], navigationExtras);
   }

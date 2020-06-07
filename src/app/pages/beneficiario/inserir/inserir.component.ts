@@ -29,6 +29,7 @@ export class InserirComponent implements OnInit {
       queryParams: {
         clt_id: JSON.stringify(this.clt_id)
       },
+      skipLocationChange: true,
     };
     this.router.navigate([`pages/${this.activeRoute.parent.routeConfig.path.split('?')[0]}`], navigationExtras);
   }
