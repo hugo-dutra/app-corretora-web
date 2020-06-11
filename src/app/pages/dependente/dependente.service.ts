@@ -2,6 +2,7 @@ import { environment } from './../../config/config';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Dependente } from './dto/dependente.dto';
+import { TelefoneDependente } from './dto/telefone-dependente.dto';
 
 
 @Injectable({
@@ -17,9 +18,19 @@ export class DependenteService {
     return this.http.post(`${environment.protocol}://${environment.host}:${environment.port}/${this.rotaBase}`, dependente, headers).toPromise();
   }
 
+  public inserirTelefones(telefones: TelefoneDependente[]): Promise<any> {
+    const headers = { headers: new HttpHeaders().append('Content-type', 'application/json').append('Authorization', localStorage.getItem('token')), };
+    return this.http.post(`${environment.protocol}://${environment.host}:${environment.port}/telefone-${this.rotaBase}`, telefones, headers).toPromise();
+  }
+
   public listar(bnf_id: number): Promise<any> {
     const headers = { headers: new HttpHeaders().append('Content-type', 'application/json').append('Authorization', localStorage.getItem('token')), };
     return this.http.get(`${environment.protocol}://${environment.host}:${environment.port}/${this.rotaBase}/${bnf_id}`, headers).toPromise();
+  }
+
+  public listarTelefones(dpd_id: number): Promise<any> {
+    const headers = { headers: new HttpHeaders().append('Content-type', 'application/json').append('Authorization', localStorage.getItem('token')), };
+    return this.http.get(`${environment.protocol}://${environment.host}:${environment.port}/telefone-${this.rotaBase}/${dpd_id}`, headers).toPromise();
   }
 
   public alterar(bependente: Dependente): Promise<any> {
@@ -33,4 +44,9 @@ export class DependenteService {
     return this.http.delete(`${environment.protocol}://${environment.host}:${environment.port}/${this.rotaBase}`, headers).toPromise();
   }
 
+  public excluirTelefone(dependente: Dependente): Promise<any> {
+    const id = dependente.id;
+    const headers = { headers: new HttpHeaders().append('Content-type', 'application/json').append('Authorization', localStorage.getItem('token')), body: { id } };
+    return this.http.delete(`${environment.protocol}://${environment.host}:${environment.port}/telefone-${this.rotaBase}`, headers).toPromise();
+  }
 }

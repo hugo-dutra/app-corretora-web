@@ -2,6 +2,7 @@ import { BeneficiarioService } from './../beneficiario.service';
 import { Beneficiario } from './../dto/beneficiario.dto';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
+import { TelefoneBeneficiario } from '../dto/telefone-beneficiario.dto';
 
 @Component({
   selector: 'ngx-inserir',
@@ -10,8 +11,11 @@ import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 })
 export class InserirComponent implements OnInit {
 
+  public telefonesBeneficiario = new Array<TelefoneBeneficiario>();
+  public telefoneBeneficiario = new TelefoneBeneficiario();
   public clt_id: number;
   public beneficiario = new Beneficiario();
+
   constructor(
     private beneficiarioService: BeneficiarioService,
     private activeRoute: ActivatedRoute,
@@ -36,9 +40,31 @@ export class InserirComponent implements OnInit {
 
   public salvar(): void {
     this.beneficiarioService.inserir(this.beneficiario).then(novoBeneficiario => {
+      this.telefonesBeneficiario = this.telefonesBeneficiario.map(telefoneBeneficiario => {
+        telefoneBeneficiario.bnf_id = novoBeneficiario.id;
+        return telefoneBeneficiario;
+      })
+      this.beneficiarioService.inserirTelefones(this.telefonesBeneficiario).then(() => { }).catch(reason => {
+        console.log(reason);
+      });
       console.log(novoBeneficiario);
     }).catch(reason => {
       console.log(reason);
+    })
+  }
+
+  public adicionarTelefone(): void {
+    let novoTelefone = new TelefoneBeneficiario();
+    novoTelefone.observacao = this.telefoneBeneficiario.observacao;
+    novoTelefone.telefone = this.telefoneBeneficiario.telefone;
+    novoTelefone.whatsapp = this.telefoneBeneficiario.whatsapp;
+    this.telefonesBeneficiario.push(novoTelefone);
+    console.log(this.telefonesBeneficiario);
+  }
+
+  public excluirTelefone(telefone: TelefoneBeneficiario): void {
+    this.telefonesBeneficiario = this.telefonesBeneficiario.filter(telefoneFiltrado => {
+      return telefoneFiltrado.telefone != telefone.telefone;
     })
   }
 

@@ -16,5 +16,43 @@
     <div class="col-12 mt-3">
       <button class="btn btn-sm btn-primary text-light bg-success float-right col-2" (click)="salvar()">Salvar</button>
     </div>
+    <div>
+      <label>Telefones</label>
+    </div>
+    <div class="input-group mb-3 mt-3 col-12 border-bottom">
+      <div class="input-group-append">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="whatsAppCheck" [(ngModel)]="telefoneDependente.whatsapp">
+          <label class="form-check-label" for="whatsAppCheck">Whatsapp</label>
+        </div>
+        <input type="text" class="form-control" placeholder="Telefone..." [(ngModel)]="telefoneDependente.telefone">
+        <input type="text" class="form-control" placeholder="Observação..." [(ngModel)]="telefoneDependente.observacao">
+      </div>
+      <button class="btn bg-warning text-dark" type="button" (click)="adicionarTelefone()"><i
+          class="fa fa-sm fa-plus-circle "></i></button>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <table class="table table-striped table-hover">
+      <thead class="thead-light">
+        <tr class="row">
+          <th class="col-1" scope="col">Whatsapp</th>
+          <th class="col-3" scope="col">Telefone</th>
+          <th class="col-7" scope="col">Observação</th>
+          <th class="col-1" scope="col">Excluir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <div class="scrollable col-12">
+          <tr class="row" *ngFor="let telefone of telefonesDependente">
+            <td class="col-1 float-left">{{ telefone.whatsapp }}</td>
+            <td class="col-3 float-left">{{ telefone.telefone }}</td>
+            <td class="col-7 float-left">{{ telefone.observacao }}</td>
+            <td class="col-1 float-left"><button class="btn btn-sm text-light bg-danger"
+                (click)="excluirTelefone(telefone)">Excluir</button></td>
+          </tr>
+        </div>
+      </tbody>
+    </table>
   </div>
 </div>
