@@ -1,3 +1,4 @@
+import { TelefoneCliente } from './dto/telefone-cliente.dto';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -19,10 +20,20 @@ export class ClienteService {
     return this.http.post(`${environment.protocol}://${environment.host}:${environment.port}/${this.rotaBase}`, cliente, headers).toPromise();
   }
 
+  public inserirTelefones(telefones: TelefoneCliente[]): Promise<any> {
+    const headers = { headers: new HttpHeaders().append('Content-type', 'application/json').append('Authorization', localStorage.getItem('token')), };
+    return this.http.post(`${environment.protocol}://${environment.host}:${environment.port}/telefone-${this.rotaBase}`, telefones, headers).toPromise();
+  }
+
   public listar(): Promise<any> {
     const cta_id = Utils.recuperarDadosUsuarioLogado().cta_id;
     const headers = { headers: new HttpHeaders().append('Content-type', 'application/json').append('Authorization', localStorage.getItem('token')), };
     return this.http.get(`${environment.protocol}://${environment.host}:${environment.port}/${this.rotaBase}/${cta_id}`, headers).toPromise();
+  }
+
+  public listarTelefones(clt_id: number): Promise<any> {
+    const headers = { headers: new HttpHeaders().append('Content-type', 'application/json').append('Authorization', localStorage.getItem('token')), };
+    return this.http.get(`${environment.protocol}://${environment.host}:${environment.port}/telefone-${this.rotaBase}/${clt_id}`, headers).toPromise();
   }
 
   public filtrar(texto: string): Promise<any> {
@@ -40,6 +51,12 @@ export class ClienteService {
     const id = cliente.id;
     const headers = { headers: new HttpHeaders().append('Content-type', 'application/json').append('Authorization', localStorage.getItem('token')), body: { id: id } };
     return this.http.delete(`${environment.protocol}://${environment.host}:${environment.port}/${this.rotaBase}`, headers).toPromise();
+  }
+
+  public excluirTelefone(cliente: Cliente): Promise<any> {
+    const id = cliente.id;
+    const headers = { headers: new HttpHeaders().append('Content-type', 'application/json').append('Authorization', localStorage.getItem('token')), body: { id } };
+    return this.http.delete(`${environment.protocol}://${environment.host}:${environment.port}/telefone-${this.rotaBase}`, headers).toPromise();
   }
 
   public consultarCEP(cep: string): Promise<any> {

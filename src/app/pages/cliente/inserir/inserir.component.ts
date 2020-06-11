@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ClienteService } from '../cliente.service';
 import { Utils } from '../../../shared/utils';
 import { rejects } from 'assert';
+import { TelefoneCliente } from '../dto/telefone-cliente.dto';
 
 @Component({
   selector: 'ngx-inserir',
@@ -12,6 +13,8 @@ import { rejects } from 'assert';
 })
 export class InserirComponent implements OnInit {
 
+  public telefonesCliente = new Array<TelefoneCliente>();
+  public telefoneCliente = new TelefoneCliente();
   public cliente = new Cliente()
   public listaUF = Utils.listarUF();
 
@@ -31,8 +34,14 @@ export class InserirComponent implements OnInit {
   public salvar(): void {
     this.cliente.cta_id = Utils.recuperarDadosUsuarioLogado().cta_id;
     this.cliente.usr_id = Utils.recuperarDadosUsuarioLogado().id;
-    this.clienteService.inserir(this.cliente).then((retorno: any) => {
-      console.log(retorno);
+    this.clienteService.inserir(this.cliente).then((retorno: Cliente) => {
+      this.telefonesCliente = this.telefonesCliente.map(telefoneCliente => {
+        telefoneCliente.clt_id = retorno.id;
+        return telefoneCliente;
+      })
+      this.clienteService.inserirTelefones(this.telefonesCliente).then(() => { }).catch(reason => {
+        console.log(reason);
+      });
     }).catch(reason => {
       console.log(reason);
     });
@@ -49,5 +58,20 @@ export class InserirComponent implements OnInit {
     }).catch(reason => {
       console.log(reason);
     });
+  }
+
+  public adicionarTelefone(): void {
+    let novoTelefone = new TelefoneCliente();
+    novoTelefone.observacao = this.telefoneCliente.observacao;
+    novoTelefone.telefone = this.telefoneCliente.telefone;
+    novoTelefone.whatsapp = this.telefoneCliente.whatsapp;
+    this.telefonesCliente.push(novoTelefone);
+    console.log(this.telefonesCliente);
+  }
+
+  public excluirTelefone(telefone: TelefoneCliente): void {
+    this.telefonesCliente = this.telefonesCliente.filter(telefoneFiltrado => {
+      return telefoneFiltrado.telefone != telefone.telefone;
+    })
   }
 }
