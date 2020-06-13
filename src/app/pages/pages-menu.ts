@@ -6,6 +6,10 @@ const CADASTRO_CHILDREN: NbMenuItem[] = [
     link: '/pages/cliente',
   },
   {
+    title: 'Contrato',
+    link: '/pages/contrato',
+  },
+  {
     title: 'Tipo de pagamento',
     link: '/pages/tipo-pagamento',
   },

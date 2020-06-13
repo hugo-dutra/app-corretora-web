@@ -106,4 +106,14 @@ export class ListarComponent implements OnInit {
     this.router.navigate([`pages/beneficiario`], navigationExtras);
   }
 
+  public novoContrato(cliente: Cliente): void {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        cliente: JSON.stringify(cliente)
+      },
+      skipLocationChange: true,
+    };
+    this.router.navigate([`pages/contrato/inserir`], navigationExtras);
+  }
+
 }
