@@ -22,7 +22,6 @@ export class DetalharComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.queryParams.subscribe((cliente: Cliente) => {
       this.cliente = JSON.parse(cliente['cliente']);
-      console.log(this.cliente);
     });
   }
 

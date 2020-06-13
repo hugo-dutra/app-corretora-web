@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -12,6 +14,8 @@ import { ExcluirComponent } from './excluir/excluir.component';
   declarations: [InserirComponent, ListarComponent, AlterarComponent, ExcluirComponent],
   imports: [
     CommonModule,
+    NgxSpinnerModule,
+    FormsModule,
     ContratoRoutingModule
   ]
 })

@@ -25,6 +25,8 @@ import { InitialPageComponent } from './initial-page/initial-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { FormsModule } from '@angular/forms';
+import { NgxSpinnerModule, NgxSpinnerService } from "ngx-spinner";
+import { NgxSpinner } from 'ngx-spinner/lib/ngx-spinner.enum';
 
 @NgModule({
   declarations: [AppComponent, InitialPageComponent, LoginPageComponent, CreatePageComponent],
@@ -41,12 +43,14 @@ import { FormsModule } from '@angular/forms';
     NbDialogModule.forRoot(),
     NbWindowModule.forRoot(),
     NbToastrModule.forRoot(),
+    NgxSpinnerModule,
     NbChatModule.forRoot({
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
   ],
+  providers: [NgxSpinnerService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

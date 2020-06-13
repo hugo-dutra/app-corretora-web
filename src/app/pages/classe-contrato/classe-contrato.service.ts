@@ -24,6 +24,11 @@ export class ClasseContratoService {
     return this.http.get(`${environment.protocol}://${environment.host}:${environment.port}/${this.rotaBase}/${cta_id}`, headers).toPromise();
   }
 
+  public listarPorTipoDeContratoId(tco_id: number): Promise<any> {
+    const headers = { headers: new HttpHeaders().append('Content-type', 'application/json').append('Authorization', localStorage.getItem('token')), };
+    return this.http.get(`${environment.protocol}://${environment.host}:${environment.port}/${this.rotaBase}/tipo-contrato/${tco_id}`, headers).toPromise();
+  }
+
   public alterar(classeContrato: ClasseContrato): Promise<any> {
     const headers = { headers: new HttpHeaders().append('Content-type', 'application/json').append('Authorization', localStorage.getItem('token')), };
     return this.http.patch(`${environment.protocol}://${environment.host}:${environment.port}/${this.rotaBase}`, classeContrato, headers).toPromise();

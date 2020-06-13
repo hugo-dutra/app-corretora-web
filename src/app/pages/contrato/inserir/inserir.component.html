@@ -1,1 +1,100 @@
-<p>inserir contrato works!</p>
+<div class="container-fluid">
+  <div class="row border-bottom">
+    <div class="col-10">
+      <h5>Novo contrato: {{cliente.nome}}</h5>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-sm form-control text-light bg-primary" (click)="listar()">Listagem</button>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="form-group col-3">
+      <label for="operadoraOption">Operadora</label>
+      <select class="form-control" [(ngModel)]="ope_id" id="operadoraOption" (change)="listarModalidades()">
+        <option *ngFor="let operadora of operadoras" [ngValue]="operadora.id">
+          {{operadora.nome}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-3">
+      <label for="modalidadeOption">Modalidades de plano</label>
+      <select class="form-control" [(ngModel)]="contrato.mop_id" id="modalidadeOption">
+        <option *ngFor="let modalidadePlano of modalidadesPlano" [ngValue]="modalidadePlano.id">
+          {{modalidadePlano.nome}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-3">
+      <label for="administradoraOption">Administradoras</label>
+      <select class="form-control" [(ngModel)]="contrato.adm_id" id="administradoraOption">
+        <option *ngFor="let administradora of administradoras" [ngValue]="administradora.id">
+          {{administradora.nome}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-3">
+      <label for="tipoContratoOption">Tipos de contrato</label>
+      <select class="form-control" [(ngModel)]="contrato.tco_id" id="tipoContratoOption"
+        (change)="listarClassesContrato()">
+        <option *ngFor="let tipoContrato of tiposContrato" [ngValue]="tipoContrato.id">
+          {{tipoContrato.nome}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-3">
+      <label for="classeDeContratoOption">Classes de contrato</label>
+      <select class="form-control" [(ngModel)]="contrato.clc_id" id="classeDeContratoOption"
+        (change)="listarClassesContrato()">
+        <option *ngFor="let classeContrato of classesContrato" [ngValue]="classeContrato.id">
+          {{classeContrato.nome}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-3">
+      <label for="numeroContrato">Numero do contrato</label>
+      <input id="numeroContrato" [(ngModel)]="contrato.numero_contrato" class="form-control" type="text">
+    </div>
+    <div class="form-group col-3">
+      <label for="valorContrato">Valor do contrato</label>
+      <input id="valorContrato" [(ngModel)]="contrato.valor" class="form-control" type="number" placeholder="R$...">
+    </div>
+    <div class="form-group col-3">
+      <label for="valorDesconto">Valor do desconto</label>
+      <input id="valorDesconto" [(ngModel)]="contrato.valor_desconto" class="form-control" type="number"
+        placeholder="R$...">
+    </div>
+    <div class="form-group col-3">
+      <label for="inicioVigencia">Início Vigência</label>
+      <input id="inicioVigencia" [(ngModel)]="contrato.inicio_vigencia" class="form-control" type="date">
+    </div>
+    <div class="form-group col-3">
+      <label for="dataAssinaturaContrato">Dada da Assinatura</label>
+      <input id="dataAssinaturaContrato" [(ngModel)]="contrato.data_assinatura_contrato" class="form-control"
+        type="date">
+    </div>
+    <div class="form-group col-3">
+      <label for="usuarioOption">Usuário</label>
+      <select class="form-control" [(ngModel)]="contrato.usr_id" id="usuarioOption">
+        <option *ngFor="let usuario of usuarios" [ngValue]="usuario.id">
+          {{usuario.nome}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 mt-3 border-bottom">
+      <button class="btn btn-sm btn-success text-light float-right col-2" (click)="salvar()">Salvar</button>
+    </div>
+  </div>
+  <div class="row">
+    <label for="">Valores associados</label>
+  </div>
+
+
+
+
+</div>
+
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-atom" [fullScreen]="true">
+  <p style="color: white"> Processando... </p>
+</ngx-spinner>
