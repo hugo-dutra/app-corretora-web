@@ -83,11 +83,70 @@
   </div>
   <div class="row">
     <div class="col-12 mt-3 border-bottom">
-      <button class="btn btn-sm btn-success text-light float-right col-2" (click)="salvar()">Salvar</button>
+      <button class="btn btn-sm btn-success text-light float-right col-2" (click)="salvar()">Concluir</button>
     </div>
   </div>
   <div class="row">
-    <label for="">Valores associados</label>
+    <label for="">Valores recebidos</label>
+  </div>
+  <div class="row border-bottom">
+    <div class="form-group col-2">
+      <label for="tipoPagamentoOption">Tipos de Pagamento</label>
+      <select class="form-control" [(ngModel)]="comissao.tip_id" id="tipoPagamentoOption">
+        <option *ngFor="let tipoPagamento of tiposPagamento" [ngValue]="tipoPagamento.id">
+          {{tipoPagamento.nome}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-2">
+      <label for="tipoComissaoOption">Tipos de Comissão</label>
+      <select class="form-control" [(ngModel)]="comissao.tcm_id" id="tipoComissaoOption" (change)="calcularComissao()">
+        <option *ngFor="let tipoComissao of tiposComissao" [ngValue]="tipoComissao.id">
+          {{tipoComissao.nome}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-2">
+      <label for="valorComissao">Valor</label>
+      <input class="form-control" type="number" [(ngModel)]="comissao.valor" placeholder="valor recebido...">
+    </div>
+    <div class="form-group col-3">
+      <label for="dataFaturamento">Dada do faturamento</label>
+      <input id="dataFaturamento" [(ngModel)]="comissao.data_faturamento" class="form-control" type="date">
+    </div>
+    <div class="form-group col-1">
+      <label for="adicionarComissao">Adicionar</label>
+      <button class="btn btn-sm btn-warning text-light" (click)="adicionarComissao()" id="adicionarComissao"><i
+          class="fa fa-sm fa-plus-square"></i></button>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <table class="table table-striped table-hover">
+      <thead class="thead-light">
+        <tr class="row">
+          <th class="col-3" scope="col">Valor</th>
+          <th class="col-3" scope="col">Tipo de pagamento</th>
+          <th class="col-3" scope="col">Tipo de comissão</th>
+          <th class="col-2" scope="col">Data do faturamento</th>
+          <th class="col-1" scope="col">Excluir</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <div class="scrollable col-12">
+          <tr class="row" *ngFor="let comissaoListagem of comissoesListagem">
+            <td class="col-3 float-left">{{ comissaoListagem.valor | currency:'BRL' }}</td>
+            <td class="col-3 float-left">{{ comissaoListagem.tip_nome  }}</td>
+            <td class="col-3 float-left">{{ comissaoListagem.tcm_nome  }}</td>
+            <td class="col-2 float-left">{{ comissaoListagem.data_faturamento | date:'dd-MM-yyyy'}}</td>
+            <td class="col-1 float-left"><button class="btn btn-sm text-light bg-danger"
+                (click)="removerComissao(comissao)">Excluir</button></td>
+          </tr>
+        </div>
+      </tbody>
+
+    </table>
   </div>
 
 

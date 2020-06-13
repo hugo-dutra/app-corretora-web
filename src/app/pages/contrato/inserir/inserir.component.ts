@@ -1,3 +1,4 @@
+import { ComissaoListagem } from './../../comissao/dto/comissao-listagem.dto';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../../cliente/dto/cliente.dto';
@@ -19,6 +20,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Contrato } from '../dto/contrato.dto';
 import { UsuarioService } from '../../usuario/usuario.service';
 import { Usuario } from '../../usuario/dto/usuario.dto';
+import { Comissao } from '../../comissao/dto/comissao.dto';
 
 @Component({
   selector: 'ngx-inserir',
@@ -46,6 +48,15 @@ export class InserirComponent implements OnInit {
 
   public tiposPagamento = new Array<TipoPagamento>();
   public tipoPagamento = new TipoPagamento();
+
+  public comissao = new Comissao();
+  public comissoes = new Array<Comissao>();
+
+  public comissaoListagem = new ComissaoListagem();
+  public comissoesListagem = new Array<ComissaoListagem>();
+
+
+
 
   public contrato = new Contrato();
   public usuarios = new Array<Usuario>();
@@ -137,6 +148,38 @@ export class InserirComponent implements OnInit {
       console.log(reason);
       this.spinner.hide();
     });
+  }
+
+  public calcularComissao(): void {
+    const tipoComissao = this.tiposComissao.filter(tipoComissao => {
+      return tipoComissao.id == this.comissao.tcm_id ? tipoComissao.percentual_associado : 0;
+    })[0];
+    const percentual_associado = (tipoComissao.percentual_associado) / 100;
+    this.comissao.valor = this.contrato.valor * percentual_associado;
+  }
+
+  public adicionarComissao(): void {
+    const novaComissao = new ComissaoListagem();
+    novaComissao.ctr_id = this.comissao.ctr_id;
+    novaComissao.data_faturamento = this.comissao.data_faturamento;
+    novaComissao.id = this.comissao.id;
+    novaComissao.tcm_id = this.comissao.tcm_id;
+    novaComissao.tcm_nome = this.tiposComissao.find((tipoComissao) => {
+      return tipoComissao.id == novaComissao.tcm_id;
+    }).nome
+    novaComissao.tip_id = this.comissao.tip_id;
+    novaComissao.tip_nome = this.tiposPagamento.find((tipoPagamento) => {
+      return tipoPagamento.id == novaComissao.tip_id;
+    }).nome;
+    novaComissao.valor = this.comissao.valor;
+    this.comissoesListagem.push(novaComissao);
+    console.clear();
+    console.log(this.comissoesListagem);
+
+  }
+
+  public removerComissao(comissaoListagem: ComissaoListagem) {
+    console.log(comissaoListagem);
   }
 
   public salvar(): void {
