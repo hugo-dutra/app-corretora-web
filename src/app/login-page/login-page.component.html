@@ -1,0 +1,23 @@
+<div class="container-fluid d-flex justify-content-center back-image"
+  style="background-image: url('../../assets/images/banner.jpg');">
+  <div class="col-lg-5 col-md-8 col-sm-12 space-top">
+    <div class="card">
+      <div class="card-header text-light bg-dark">
+        Acessar sistema
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label class="text-left border-bottom col-12"><b>Informe as credenciais</b></label>
+          <input class="form-control mb-1" type="text" name="" [(ngModel)]="usuario.email" placeholder="nome...">
+          <input class="form-control mb-1" type="email" name="" [(ngModel)]="usuario.senha" placeholder="e-mail...">
+        </div>
+      </div>
+      <div class="card-footer bg-dark">
+        <button type="" class="float-right btn btn-sm btn-success text-light" (click)="logar()">Logar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-atom" [fullScreen]="true">
+  <p style="color: white"> Processando... </p>
+</ngx-spinner>

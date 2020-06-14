@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row border-bottom">
+    <div class="col-10">
+      <h5 class="text-danger">Excluir Tipo de Comissão</h5>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-sm form-control text-light bg-primary" (click)="listar()">Listagem</button>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-8">
+      <input readonly class="form-control" [(ngModel)]="tipoComissao.nome" placeholder="nome...">
+    </div>
+    <div class="col-4">
+      <input readonly type="number" class="form-control" [(ngModel)]="tipoComissao.percentual_associado"
+        placeholder="valor... (%)">
+    </div>
+    <div class="col-12 mt-3">
+      <button class="btn btn-sm btn-primary text-light bg-danger float-right col-2" (click)="excluir()">Excluir</button>
+    </div>
+  </div>
+</div>

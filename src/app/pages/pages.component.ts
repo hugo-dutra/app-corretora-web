@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { MENU_ITEMS } from './pages-menu';
+import { NbMenuItem } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-pages',
@@ -12,7 +13,7 @@ import { MENU_ITEMS } from './pages-menu';
     </ngx-one-column-layout>
   `,
 })
-export class PagesComponent {
 
+export class PagesComponent {
   menu = MENU_ITEMS;
 }

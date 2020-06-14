@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="row border-bottom">
+    <div class="col-10">
+      <h5>Tipos de contrato</h5>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-sm form-control text-light bg-primary" (click)="inserir()">Novo</button>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <table class="table table-striped table-hover">
+      <thead class="thead-light">
+        <tr class="row">
+          <th class="col-1" scope="col">Cod</th>
+          <th class="col-9" scope="col">Nome</th>
+          <th class="col-1" scope="col">Alterar</th>
+          <th class="col-1" scope="col">Excluir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row" *ngFor="let tipo of tiposContrato">
+          <td class="col-1 float-left">{{ tipo.id }}</td>
+          <td class="col-9 float-left">{{ tipo.nome }}</td>
+          <td class="col-1 float-left"><button class="btn btn-sm text-light bg-warning"
+              (click)="alterar(tipo)">Alterar</button></td>
+          <td class="col-1 float-left"><button class="btn btn-sm text-light bg-danger"
+              (click)="excluir(tipo)">Excluir</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

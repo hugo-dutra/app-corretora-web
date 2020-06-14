@@ -1,0 +1,18 @@
+body {
+  padding-top: 10px;
+}
+
+.bg-image-full {
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+.back-image {
+  height: 90vh;
+}
+
+.nav-item {
+  cursor: pointer;
+}

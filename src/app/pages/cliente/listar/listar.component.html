@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <div class="row border-bottom">
+    <div class="col-10">
+      <h5>Clientes</h5>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-sm form-control text-light bg-primary" (click)="inserir()">Novo</button>
+    </div>
+  </div>
+  <div class="row border-bottom">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" (keyup)="filtrar($event)" placeholder="Procurar cliente..."
+        aria-label="Filtrar" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" (click)="filtrarBotao()" type="button"><i
+            class="fa fa-sm fa-search"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <table class="table table-striped table-hover">
+      <thead class="thead-light">
+        <tr class="row">
+          <th class="col-1" scope="col">Cod</th>
+          <th class="col-6" scope="col">Nome</th>
+          <th class="col-1" scope="col">Beneficiários</th>
+          <th class="col-1" scope="col">Detalhar</th>
+          <th class="col-1" scope="col">Contratos</th>
+          <th class="col-1" scope="col">Alterar</th>
+          <th class="col-1" scope="col">Excluir</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <div class="scrollable col-12">
+          <tr class="row" *ngFor="let cliente of clientes">
+            <td class="col-1 float-left">{{ cliente.id }}</td>
+            <td class="col-6 float-left">{{ cliente.nome }}</td>
+            <td class="col-1 text-center"><button class="btn btn-sm text-light bg-primary"
+                (click)="beneficiario(cliente)"><i class="fa fa-sm fa-users"></i></button></td>
+            <td class="col-1 float-left"><button class="btn btn-sm text-light bg-success"
+                (click)="detalhar(cliente)">Detalhar</button></td>
+            <td class="col-1 float-left"><button class="btn btn-sm text-light bg-dark"
+                (click)="novoContrato(cliente)">Contratos</button></td>
+            <td class="col-1 float-left"><button class="btn btn-sm text-light bg-warning"
+                (click)="alterar(cliente)">Alterar</button></td>
+            <td class="col-1 float-left"><button class="btn btn-sm text-light bg-danger"
+                (click)="excluir(cliente)">Excluir</button></td>
+          </tr>
+        </div>
+      </tbody>
+
+    </table>
+  </div>
+</div>

@@ -19,6 +19,31 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
+      path: 'administradora',
+      loadChildren: () => import('./administradora/administradora.module')
+        .then(m => m.AdministradoraModule),
+    },
+    {
+      path: 'beneficiario',
+      loadChildren: () => import('./beneficiario/beneficiario.module')
+        .then(m => m.BeneficiarioModule),
+    },
+    {
+      path: 'cliente',
+      loadChildren: () => import('./cliente/cliente.module')
+        .then(m => m.ClienteModule),
+    },
+    {
+      path: 'contrato',
+      loadChildren: () => import('./contrato/contrato.module')
+        .then(m => m.ContratoModule),
+    },
+    {
+      path: 'classe-contrato',
+      loadChildren: () => import('./classe-contrato/classe-contrato.module')
+        .then(m => m.ClasseContratoModule),
+    },
+    {
       path: 'layout',
       loadChildren: () => import('./layout/layout.module')
         .then(m => m.LayoutModule),
@@ -54,9 +79,49 @@ const routes: Routes = [{
         .then(m => m.ChartsModule),
     },
     {
+      path: 'corretora',
+      loadChildren: () => import('./corretora/corretora.module')
+        .then(m => m.CorretoraModule),
+    },
+    {
+      path: 'dependente',
+      loadChildren: () => import('./dependente/dependente.module')
+        .then(m => m.DependenteModule),
+    },
+    {
+      path: 'usuario',
+      loadChildren: () => import('./usuario/usuario.module')
+        .then(m => m.UsuarioModule),
+    },
+    {
       path: 'editors',
       loadChildren: () => import('./editors/editors.module')
         .then(m => m.EditorsModule),
+    },
+    {
+      path: 'modalidade-plano',
+      loadChildren: () => import('./modalidade-plano/modalidade-plano.module')
+        .then(m => m.ModalidadePlanoModule),
+    },
+    {
+      path: 'operadora',
+      loadChildren: () => import('./operadora/operadora.module')
+        .then(m => m.OperadoraModule),
+    },
+    {
+      path: 'tipo-comissao',
+      loadChildren: () => import('./tipo-comissao/tipo-comissao.module')
+        .then(m => m.TipoComissaoModule),
+    },
+    {
+      path: 'tipo-contrato',
+      loadChildren: () => import('./tipo-contrato/tipo-contrato.module')
+        .then(m => m.TipoContratoModule),
+    },
+    {
+      path: 'tipo-pagamento',
+      loadChildren: () => import('./tipo-pagamento/tipo-pagamento.module')
+        .then(m => m.TipoPagamentoModule),
     },
     {
       path: 'tables',
