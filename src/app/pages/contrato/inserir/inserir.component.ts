@@ -30,33 +30,22 @@ import { Comissao } from '../../comissao/dto/comissao.dto';
 export class InserirComponent implements OnInit {
   public administradoras = new Array<Administradora>();
   public administradora = new Administradora();
-
   public classesContrato = new Array<ClasseContrato>();
   public classeContrato = new ClasseContrato();
-
   public operadoras = new Array<Operadora>();
   public operadora = new Operadora();
-
   public modalidadesPlano = new Array<ModalidadePlano>();
   public modalidadePlano = new ModalidadePlano();
-
   public tiposComissao = new Array<TipoComissao>();
   public tipoComissao = new TipoComissao();
-
   public tiposContrato = new Array<TipoContrato>();
   public tipoContrato = new TipoContrato();
-
   public tiposPagamento = new Array<TipoPagamento>();
   public tipoPagamento = new TipoPagamento();
-
   public comissao = new Comissao();
   public comissoes = new Array<Comissao>();
-
   public comissaoListagem = new ComissaoListagem();
   public comissoesListagem = new Array<ComissaoListagem>();
-
-
-
 
   public contrato = new Contrato();
   public usuarios = new Array<Usuario>();
@@ -173,17 +162,25 @@ export class InserirComponent implements OnInit {
     }).nome;
     novaComissao.valor = this.comissao.valor;
     this.comissoesListagem.push(novaComissao);
-    console.clear();
-    console.log(this.comissoesListagem);
-
   }
 
   public removerComissao(comissaoListagem: ComissaoListagem) {
-    console.log(comissaoListagem);
+    this.comissoesListagem = this.comissoesListagem.filter(comissao => {
+      return comissao.tcm_id != comissaoListagem.tcm_id &&
+        comissao.tip_id != comissaoListagem.tip_id &&
+        comissao.data_faturamento != comissaoListagem.data_faturamento &&
+        comissao.valor != comissaoListagem.valor
+    });
   }
 
   public salvar(): void {
+    this.comissoes = this.comissoesListagem.map(comissaoListagem => {
+      delete comissaoListagem.tcm_nome;
+      delete comissaoListagem.tip_nome;
+      return <Comissao>comissaoListagem
+    })
     console.log(this.contrato);
+    console.log(this.comissoes);
   }
 
 }
